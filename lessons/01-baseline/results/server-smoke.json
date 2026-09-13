@@ -1,0 +1,8 @@
+{
+  "completion": " the force that holds the Earth and the Moon together.\n\nThe Moon is",
+  "input_tokens": 3,
+  "output_tokens": 16,
+  "generation_s": 1.86196044459939,
+  "output_tokens_per_s": 8.593093395946163,
+  "fixed_length": true
+}

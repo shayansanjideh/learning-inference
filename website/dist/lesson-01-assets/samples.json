@@ -1,0 +1,26 @@
+{
+  "128:32": {
+    "output_sha256": "068468fc44957fe789acb64ac474196431dbe1f8922b2f1eb4604b5ff3e98f9a",
+    "completion": " fixes the hardware, precision, and workload before measuring latency. Inference engineering studies how language models turn a prompt into tokens. A useful experiment fixes the hardware,"
+  },
+  "256:32": {
+    "output_sha256": "d37164e92d395f639f14fb5e3804997d977119d901c5f9e78b5ed8e55a34f552",
+    "completion": " how language models turn a prompt into tokens. A useful experiment fixes the hardware, precision, and workload before measuring latency. Inference engineering studies how language models turn"
+  },
+  "128:16": {
+    "output_sha256": "d98eb75dc18e4009e8d97626ca153ee826b07aebc5f001415a79076278b26cab",
+    "completion": " fixes the hardware, precision, and workload before measuring latency. Inference engineering studies"
+  },
+  "64:32": {
+    "output_sha256": "2c675af1aec20786ad0835e78c1fb623a9ac2a5c763fe398c8c2ad201fc74dce",
+    "completion": " a prompt into tokens. A useful experiment fixes the hardware, precision, and workload before measuring latency. Inference engineering studies how language models turn a prompt into tokens"
+  },
+  "128:64": {
+    "output_sha256": "795f17c1707b0867520895a2e88bb6a3a2ac17ffd7725233caeffac12373da12",
+    "completion": " fixes the hardware, precision, and workload before measuring latency. Inference engineering studies how language models turn a prompt into tokens. A useful experiment fixes the hardware, precision, and workload before measuring latency. Inference engineering studies how language models turn a prompt into tokens. A useful experiment fixes the hardware, precision, and workload"
+  },
+  "128:8": {
+    "output_sha256": "fdfbc7c1821faa908f97eaa8b2516db23dd671c2f1ebef2c77640db638fcc6d8",
+    "completion": " fixes the hardware, precision, and workload"
+  }
+}
