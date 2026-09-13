@@ -24,12 +24,14 @@ page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="v
 for name in ['LESSON.md','article.md']:(lab/name).write_text(article)
 (lab/'report.py').write_text('''"""Refresh LESSON.md from the maintained article.md. Charts come from plot.py."""\nfrom pathlib import Path\np=Path(__file__).resolve().parent\n(p/'LESSON.md').write_text((p/'article.md').read_text())\nprint('Refreshed lesson from article.md')\n''')
 assets.mkdir(exist_ok=True)
+if (lab/'thread-images').exists():shutil.copytree(lab/'thread-images',assets/'thread-images',dirs_exist_ok=True)
 for p in (lab/'results').iterdir():
  if p.is_file():shutil.copy2(p,assets/p.name)
 for name in ['LESSON.md','README.md','THREAD-DRAFT.md']:shutil.copy2(lab/name,assets/name)
 files=['README.md','LESSON.md','article.md','THREAD-DRAFT.md','lab.py','client.py','download_model.py','plot.py','report.py','requirements.txt','environment-freeze.txt','model-lock.json']
 with zipfile.ZipFile(assets/'lesson-01.zip','w',zipfile.ZIP_DEFLATED) as z:
  for name in files:z.write(lab/name,'lesson-01/'+name)
+ for p in sorted((lab/'thread-images').glob('*.png')):z.write(p,'lesson-01/thread-images/'+p.name)
  for p in (lab/'results').iterdir():
   if p.is_file():z.write(p,'lesson-01/results/'+p.name)
  # Article graphics use the same relative paths in the downloaded Markdown.

@@ -1,51 +1,62 @@
 # Lesson 1 — Twitter thread draft
 
+Five posts, one image per post. Copy each post body and attach its corresponding PNG.
+
 ## 1/5
 
-I’m learning inference engineering by building and measuring the pieces.
+I want to get better at inference engineering, and I think a good way to learn AI is with AI itself.
 
-Lesson 1: running a small LLM server, benchmarking prompt and output lengths, and understanding prefill vs. decode.
+I’ve been using Astra to work through a lesson plan with me. I’ll share what I learn every few days as I finish each lesson.
 
-I put the code, results, and walkthrough into a public guide.
+First up: running and benchmarking a small LLM.
+
+**Attach:** [Image 1](thread-images/01-introduction.png)
 
 ## 2/5
 
-My setup: SmolLM2-135M on a two-core CPU VM.
+Lesson 1: a minimal inference server using SmolLM2-135M on my two-core CPU VM.
 
-I kept batch size at 1, warmed up each condition, then measured it five times.
+I worked through:
+- how a prompt becomes tokens
+- prefill vs. decode
+- how input and output lengths affect generation time
 
-The timer covers generation. Model loading, tokenization, and HTTP overhead are outside it.
+The guide includes the code, measurements, and exercises.
+
+**Attach:** [Image 2](thread-images/02-request-path.png)
 
 ## 3/5
 
-With a 128-token prompt, going from 16 to 64 output tokens increased median generation time from 2.16s to 7.53s.
+With a 128-token prompt, generating 16 tokens took 2.16s; generating 64 took 7.53s.
 
 4× the output, about 3.5× the time.
 
-Output tokens per second rose too: the initial prompt-processing cost was spread over more generated tokens.
+These are medians of five runs after warmup. The timer covers generation, with model loading and tokenization outside it.
+
+**Attach:** [Image 3](thread-images/03-output-scaling.png)
 
 ## 4/5
 
-With output fixed at 32 tokens, increasing the prompt from 64 to 256 tokens raised median generation time from 3.43s to 4.75s.
+Keeping output at 32 tokens, increasing the prompt from 64 to 256 tokens raised median generation time from 3.43s to 4.75s.
 
-Processing a prompt in parallel still takes work.
+My initial intuition was that parallel prompt processing might keep the time constant. This experiment helped me see why that was too simple.
 
-Next I’ll separate prefill and decode timings to see where the extra time goes.
+**Attach:** [Image 4](thread-images/04-input-scaling.png)
 
 ## 5/5
 
-Next lesson: writing my own prefill + decode loop and checking it against .generate().
+Next: writing my own prefill + decode loop and measuring the two phases separately.
 
-Lesson 1 has the server, charts, raw measurements, and exercises:
+The goal is to learn the ins and outs of inference engineering, one build at a time.
+
+Lesson 1:
 https://shayansanjideh.github.io/learning-inference/lesson-01.html
 
 Code:
 https://github.com/shayansanjideh/learning-inference
 
-## Attachments
+**Attach:** [Image 5](thread-images/05-prefill-decode.png)
 
-- Post 1: screenshot of the lesson introduction.
-- Post 3: `results/output-scaling.png`.
-- Post 4: `results/input-scaling.png`.
+## Publishing notes
 
-Draft only; nothing has been posted to Twitter. Results are median total-generation timings; separate phase measurements belong to the next lesson.
+Draft only. Images are screenshots of the guide and its recorded measurements. Post 3 and post 4 report total generation time; the next lesson separates prefill and decode.
